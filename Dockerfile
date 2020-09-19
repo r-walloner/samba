@@ -3,7 +3,8 @@ MAINTAINER David Personette <dperson@gmail.com>
 
 # Install samba
 RUN apk --no-cache --no-progress upgrade && \
-    apk --no-cache --no-progress add bash samba shadow tini tzdata && \
+    apk --no-cache --no-progress add bash shadow tini tzdata && \
+    apk --no-cache --no-progress add samba=4.11.9-r0 --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/main && \
     addgroup -S smb && \
     adduser -S -D -H -h /tmp -s /sbin/nologin -G smb -g 'Samba User' smbuser &&\
     file="/etc/samba/smb.conf" && \
